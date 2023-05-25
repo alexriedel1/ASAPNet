@@ -51,7 +51,11 @@ class AlignedDataset(BaseDataset):
 
         A = A_transform(A)
         B = B_transform(B)
-        return {'label': A, 'image': B, 'A_paths': AB_path, 'B_paths': AB_path}
+
+        if (self.opt.no_instance_edge & self.opt.no_instance_dist):
+            instance_tensor = 0
+
+        return {'label': A, 'image': B, 'A_paths': AB_path, 'B_paths': AB_path, "instance" : instance_tensor}
 
     def __len__(self):
         """Return the total number of images in the dataset."""
