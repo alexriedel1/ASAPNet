@@ -26,8 +26,8 @@ class AlignedDataset(BaseDataset):
 
         assert (self.opt.load_size >= self.opt.crop_size
                 )  # crop_size should be smaller than the size of loaded image
-        self.input_nc = self.opt.output_nc if self.opt.direction == 'BtoA' else self.opt.input_nc
-        self.output_nc = self.opt.input_nc if self.opt.direction == 'BtoA' else self.opt.output_nc
+        self.input_nc = 3
+        self.output_nc = 3
         self.cache = {}
 
     def __getitem__(self, index):
