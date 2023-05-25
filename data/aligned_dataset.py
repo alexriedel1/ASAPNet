@@ -19,6 +19,7 @@ class AlignedDataset(BaseDataset):
             opt (Option class) -- stores all the experiment flags; needs to be a subclass of BaseOptions
         """
         #BaseDataset.__init__(self, opt)
+        self.opt = opt
         self.dir_AB = os.path.join(opt.dataroot,
                                    opt.phase)  # get the image directory
         self.AB_paths = sorted(make_dataset(self.dir_AB))  # get image paths
