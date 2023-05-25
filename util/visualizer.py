@@ -13,9 +13,8 @@ try:
     from StringIO import StringIO  # Python 2.7
 except ImportError:
     from io import BytesIO         # Python 3.x
-
+    
 from tensorboardX import SummaryWriter
-
 class Visualizer():
     def __init__(self, opt):
         self.opt = opt
@@ -27,7 +26,7 @@ class Visualizer():
             import tensorflow as tf
             self.tf = tf
             self.log_dir = os.path.join(opt.checkpoints_dir, opt.name, 'logs')
-            self.writer = SummaryWriter(opt.tensorboard_dir)
+            self.writer = SummaryWriter(self.log_dir)
 
         if self.use_html:
             self.web_dir = os.path.join(opt.checkpoints_dir, opt.name, 'web')
