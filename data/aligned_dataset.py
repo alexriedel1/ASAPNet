@@ -32,12 +32,7 @@ class AlignedDataset(BaseDataset):
 
     def __getitem__(self, index):
         AB_path = self.AB_paths[index]
-        if not self.opt.load_in_memory or self.cache.get(index) is None:
-            AB = Image.open(AB_path).convert('RGB')
-            if self.opt.load_in_memory:
-                self.cache[index] = AB
-        else:
-            AB = self.cache[index]
+        AB = Image.open(AB_path).convert('RGB')
 
         # split AB image into A and B
         w, h = AB.size
