@@ -14,6 +14,8 @@ try:
 except ImportError:
     from io import BytesIO         # Python 3.x
 
+from tensorboardX import SummaryWriter
+
 class Visualizer():
     def __init__(self, opt):
         self.opt = opt
@@ -25,7 +27,7 @@ class Visualizer():
             import tensorflow as tf
             self.tf = tf
             self.log_dir = os.path.join(opt.checkpoints_dir, opt.name, 'logs')
-            self.writer = tf.summary.FileWriter(self.log_dir)
+            self.writer = SummaryWriter(opt.tensorboard_dir)
 
         if self.use_html:
             self.web_dir = os.path.join(opt.checkpoints_dir, opt.name, 'web')
